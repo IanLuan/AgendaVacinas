@@ -1,0 +1,11 @@
+@import './variables';
+
+$primary: $primaryColor;
+$secondary: $secondaryColor;
+$danger: $errorColor;
+
+.row {
+    margin: 0 !important;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'semantic-ui-css/semantic.min.css';
 import './sassStyles/_global.scss';
 import './sassStyles/_typography.scss';
+import './sassStyles/_custom.scss';
 
 ReactDOM.render(
   <React.StrictMode>

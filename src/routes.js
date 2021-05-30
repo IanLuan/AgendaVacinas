@@ -7,7 +7,7 @@ import Auth from './views/Auth/Auth';
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Auth} />
+      <Route exact path="/entrar" component={Auth} />
     </Switch>
   </BrowserRouter>
 );

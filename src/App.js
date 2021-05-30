@@ -1,10 +1,14 @@
+import React from 'react';
 import Routes from './routes';
+import { ViewportProvider } from './useViewport';
+
 
 function App() {
+
   return (
-    <div className="App">
+    <ViewportProvider>
       <Routes />
-    </div>
+    </ViewportProvider>
   );
 } 
 
