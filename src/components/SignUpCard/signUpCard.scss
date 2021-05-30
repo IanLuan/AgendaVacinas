@@ -1,0 +1,52 @@
+@import '../../sassStyles/variables';
+
+.signUp-col {
+    align-items: center;
+    width: 35%;
+}
+
+.signUp-card {
+    padding: 40px;
+
+    .card-title {
+        color: $primaryColor;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: .1rem;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .link {
+        width: 100%;
+        text-align: right;
+        padding-bottom: 1rem;
+        font-size: 0.8rem;
+    }
+
+
+    .btn {
+        font-size: .7rem;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+    }
+}
+
+.legal-text {
+    font-size: 0.7em;
+    padding: .5rem .3rem;
+    text-align: center;
+}
+
+.button-link {
+    background-color: transparent;
+    border: 0;
+    color: #4a4a4a;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    text-decoration: underline;
+}

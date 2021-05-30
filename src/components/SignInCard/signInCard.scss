@@ -1,0 +1,36 @@
+@import '../../sassStyles/variables';
+
+.signIn-card {
+    width: 35%;
+    padding: 40px;
+
+    @include breakpoint(tablet-landscape-up) {
+        width: 50%;
+    }
+
+    @include breakpoint(desktop-up) {
+        width: 35%;
+    }
+
+    .card-title {
+        color: $primaryColor;
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .link {
+        width: 100%;
+        text-align: right;
+        padding-bottom: 1rem;
+    }
+
+
+    .btn {
+        font-size: .7rem;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+
+    }
+   
+}

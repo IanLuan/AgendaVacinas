@@ -1,0 +1,23 @@
+@import './variables';
+
+.title {
+    font-family: "Poppins";
+    font-weight: bold;
+}
+
+p, span, .btn {
+    font-family: "Poppins";
+    font-size: 0.7rem;
+}
+
+.field-label {
+    font-family: "Poppins";
+}
+
+.font-light {
+    font-weight: 300  !important;
+}
+
+.font-bold {
+    font-weight: bold  !important;
+}

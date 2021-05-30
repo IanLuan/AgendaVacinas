@@ -1,16 +1,81 @@
-* {
-    box-sizing: border-box;
+@import './variables';
+
+html {
+
+  @include breakpoint(tablet-landscape-up) {
+    font-size: 100%;
+  }
+  
+
+  @include breakpoint(big-desktop-up) {
+    font-size: 142.8571428%;
+  }
+
+
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  color: #4a4a4a;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+h1,h2,h3,h4,h5,p {
+  margin: 0;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    box-sizing: border-box;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  color: #4a4a4a;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s;
+}
+
+.card {
+  box-shadow: 0px 3px 6px #0000001A;
+  border: 1px solid #E3E3E3;
+  border-radius: 6px;
+  background-color: white;
+
+  .alert {
+    font-size: 0.7rem;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.link {
+  color: #4A4A4A;
+  cursor: pointer;
+  font-size: .7rem;
+
+  &:hover {
+    color: $primaryColor;
+    text-decoration: none;
+  }
+
+}
+
+.modal-button {
+  font-size: .7rem;
+}
+
+.primary {
+  background-color: $primaryColor !important;
 }
