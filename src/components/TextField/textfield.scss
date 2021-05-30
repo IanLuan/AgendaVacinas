@@ -1,0 +1,17 @@
+@import '../../sassStyles/variables';
+
+.form-control {
+    font-size: .75rem !important;
+    padding-top: 1.15rem !important;
+    padding-bottom: 1.15rem !important;
+    color: #4a4a4a !important;
+}
+
+.field-label {
+    font-size: .7rem;
+}
+
+.invalid-feedback {
+    font-size: .7rem !important;
+    text-align: justify;
+}
