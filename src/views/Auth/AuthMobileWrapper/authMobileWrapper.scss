@@ -1,0 +1,125 @@
+@import '../../../sassStyles/variables';
+
+.auth-mobile {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: $secondaryColor;
+
+    .title {
+        font-size: 1.3em;
+        color: white;
+    }
+    
+}
+
+.auth-bg {
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+    opacity: 0.1;
+}
+
+.signup-bg {
+    background-color: white;
+    position: absolute;
+    padding: 0 0.6rem;
+    top: calc(6rem +  3rem);
+    min-height: calc(100% - 9rem);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include breakpoint(tablet-portrait-only) {
+        padding: 0 2.5rem;
+        top: calc(8rem +  3rem);
+        min-height: calc(100% - 11rem);
+    }
+
+    
+}
+
+.auth-mobile-header {
+    height: 6rem;
+    position: absolute;
+    align-items: center;
+    top: 0%;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    transition: all 0.4s;
+
+    @include breakpoint(tablet-portrait-only) {
+        height: 8rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .calendar-icon {
+        height: 2.5rem;
+        transition: all 0.4s;
+    }
+
+    .btn {
+        font-size: .7rem;
+        padding: 0.4rem 1rem;
+        height: max-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $primaryColor;
+        transition: all 0.4s;
+    }
+
+    .title {
+        font-size: 0.9rem;
+        text-align: left;
+        margin-left: 1rem;
+        width: min-content;
+    }
+}
+
+
+.auth-mobile-logos {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 calc(1.5rem - 0.6rem);
+    padding-bottom: 1rem;
+
+    .lais-logo {
+       height: 1.5rem;
+       filter: brightness(0) invert(1);
+       transition: all 0.4s;
+    } 
+
+    .ufrn-logo {
+        height: 2.5rem;
+        filter: brightness(0) invert(1);
+        transition: all 0.4s;
+    }
+
+    .logo-no-filter {
+        filter: none;
+    }
+}
+
+.mobile-logo-bottom {
+    position: absolute;
+    bottom: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @include breakpoint(tablet-portrait-only) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+}
+

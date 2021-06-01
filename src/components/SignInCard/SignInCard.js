@@ -20,7 +20,7 @@ const useFormInput = initialValue => {
 }
 
 
-const SignInCard = ({ styles }) => {
+const SignInCard = ({ toggleLogin }) => {
   const history = useHistory();
 
   const email = useFormInput('');
@@ -60,6 +60,7 @@ const SignInCard = ({ styles }) => {
         }
       })
       .then((response) => {
+        localStorage.setItem('isLogged', true)
         setHasLoginError(false);
         history.push("/");
       })
@@ -93,8 +94,8 @@ const SignInCard = ({ styles }) => {
   );
 
   return (
-    <div className="signIn-card card" style={styles}>
-      <p className="font-light card-title">Preencha os campos abaixo</p>
+    <div className="signIn-card my-card">
+      <h3 className="font-bold card-title">Preencha os campos abaixo</h3>
 
       <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
 

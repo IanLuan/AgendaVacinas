@@ -5,10 +5,20 @@
     padding-top: 1.15rem !important;
     padding-bottom: 1.15rem !important;
     color: #4a4a4a !important;
+
+    @include breakpoint(tablet-portrait-down) {
+        padding-top: 0.8rem !important;
+        padding-bottom: 0.8rem !important;
+    }
 }
 
 .field-label {
     font-size: .7rem;
+    margin-bottom: 0.2rem;
+
+    @include breakpoint(tablet-portrait-down) {
+        margin-bottom: 0;
+    }
 }
 
 .invalid-feedback {

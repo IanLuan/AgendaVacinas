@@ -4,6 +4,30 @@
     width: 35%;
     padding: 40px;
 
+    @include breakpoint(tablet-portrait-down) {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 1.5rem;
+
+        .field-label {
+            color: white;
+        }
+
+        .form-control {
+            padding-top: 0.4rem;
+            padding-bottom: 0.4rem;
+        }
+    }
+
+    @include breakpoint(tablet-portrait-only) {
+        padding: 0 3rem;
+    }
+
     @include breakpoint(tablet-landscape-up) {
         width: 50%;
     }
@@ -14,15 +38,23 @@
 
     .card-title {
         color: $primaryColor;
-        font-size: 0.7rem;
+        font-size: 1rem;
         text-align: center;
         margin-bottom: 1rem;
+
+        @include breakpoint(tablet-portrait-down) {
+            display: none;
+        }
     }
 
     .link {
         width: 100%;
         text-align: right;
         padding-bottom: 1rem;
+
+        @include breakpoint(tablet-portrait-down) {
+            color: white;
+        }
     }
 
 
@@ -30,7 +62,8 @@
         font-size: .7rem;
         padding-top: 0.6rem;
         padding-bottom: 0.6rem;
-
     }
+
+ 
    
 }

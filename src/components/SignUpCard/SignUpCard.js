@@ -19,7 +19,7 @@ const useFormInput = initialValue => {
 }
 
 
-const SignUpCard = ({ styles }) => {
+const SignUpCard = ({ toggleLogin }) => {
   const history = useHistory();
   const email = useFormInput('');
   const name = useFormInput('');
@@ -30,6 +30,8 @@ const SignUpCard = ({ styles }) => {
   const [passwordError, setPasswordError] = useState('');
   const [isEmailOnly, setIsEmailOnly] = useState(true);
   const [modalShow, setModalShow] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const hasError = key => {
@@ -38,6 +40,8 @@ const SignUpCard = ({ styles }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setIsLoading(true);
+
     let errors = [];
 
     // email
@@ -80,14 +84,19 @@ const SignUpCard = ({ styles }) => {
     setErrors(errors);
 
     if (errors.length > 0) {
+      setIsLoading(false);
       return false;
     } else {
 
       if(isEmailOnly) {
         setIsEmailOnly(false);
+        setIsLoading(false);
       } else {
-        history.push('/');
-
+        setSuccess(true);
+        localStorage.setItem('isLogged', true)
+        setTimeout(() => { 
+          history.push('/');
+        }, 2000);
       }
     }
     
@@ -132,18 +141,33 @@ const SignUpCard = ({ styles }) => {
     );
 
     
-    const legalText = isEmailOnly ? null 
-    : <p className="legal-text">Ao assinar você concorda com os <button className="button-link" onClick={() => setModalShow(true)}>termos de serviço</button> e <button className="button-link" onClick={() => setModalShow(true)}>política de privacidade</button></p>;
-    
+  const legalText = isEmailOnly ? null 
+  : <p className="legal-text">Ao assinar você concorda com os <button className="button-link" onClick={() => setModalShow(true)}>termos de serviço</button> e <button className="button-link" onClick={() => setModalShow(true)}>política de privacidade</button></p>;
+
+  const successAlert = success ? 
+    <div className="alert alert-success full-width" role="alert">
+      Cadastro realizado!
+    </div>
+  : null
+
+  const buttonContent = isLoading
+  ? (
+    <span className="spinner-border spinner-border-sm text-white" role="status" aria-hidden="true"></span>  
+  )
+  : (
+    <>Entrar</>
+  );
 
 
   return (
     <div className="signUp-col">
-      <div className="signUp-card card" style={styles}>
+      <div className="signUp-card my-card">
         <h3 className="font-bold card-title">{title}</h3>
         <p>É rápido, simples e seguro</p>
 
         <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
+
+          {successAlert}
 
           <TextField
             id="emailField"
@@ -157,7 +181,9 @@ const SignUpCard = ({ styles }) => {
 
           { formComplete }
 
-          <button className="btn btn-primary btn-block font-bold mt-2" type="submit" disabled={!email.value.length > 0}>Continuar</button>
+          <p className="has-account-question">Já tem uma conta? <button type="button" className="button-link" onClick={() => toggleLogin() }>Entrar</button></p>
+
+          <button className="btn btn-primary btn-block font-bold mt-2" type="submit" disabled={!email.value.length > 0}>{buttonContent}</button>
         </form>
       </div>
 
@@ -173,7 +199,7 @@ const SignUpCard = ({ styles }) => {
         scrollable
       >
         <Modal.Body>
-          <h5 class="title text-primary mb-3">Termos e Política de privacidade</h5>
+          <h5 className="title text-primary mb-3">Termos e Política de privacidade</h5>
           <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
           <br></br>

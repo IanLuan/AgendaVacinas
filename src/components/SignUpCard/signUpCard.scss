@@ -3,16 +3,30 @@
 .signUp-col {
     align-items: center;
     width: 35%;
+
+    @include breakpoint(tablet-portrait-down) {
+        width: 100%;
+        margin-top: -3rem;
+    }
 }
 
 .signUp-card {
     padding: 40px;
+    background-color: white;
+
+    @include breakpoint(tablet-portrait-down) {
+        padding: 1rem;
+    }
 
     .card-title {
         color: $primaryColor;
         font-size: 1rem;
         text-align: center;
         margin-bottom: .1rem;
+
+        @include breakpoint(phone-only) {
+            font-size: 0.9rem;
+        }
     }
 
     p {
@@ -35,9 +49,13 @@
 }
 
 .legal-text {
-    font-size: 0.7em;
+    font-size: 0.7rem;
     padding: .5rem .3rem;
     text-align: center;
+
+    @include breakpoint(phone-only) {
+        font-size: 0.6rem;
+    }
 }
 
 .button-link {
@@ -49,4 +67,21 @@
     padding: 0;
     position: relative;
     text-decoration: underline;
+}
+
+.has-account-question {
+
+    font-size: 0.7rem;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0.2rem 0;
+
+    @include breakpoint(phone-only) {
+        font-size: 0.6rem;
+    }
+
+    @include breakpoint(tablet-landscape-up) {
+        display: none;
+    }
 }
