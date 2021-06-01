@@ -1,0 +1,136 @@
+@import '../../sassStyles/variables';
+
+.sidebar {
+    width: 16%;
+    height: 100vh;
+    border-right: 1px solid $primaryColor;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(tablet-landscape-up) {
+        width: 25%;
+    }
+
+    @include breakpoint(desktop-up) {
+        width: 16%;
+    }
+
+    .calendar-icon {
+        height: 2rem;
+        margin-right: 0.5rem;
+    }
+
+    .sidebar-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .sidebar-title {
+        color: $secondaryColor;
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
+    .sidebar-userArea {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        padding-bottom: 5px;
+
+        .center-col {
+            margin-left: .5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            span {
+                font-size: .75rem;
+            }
+    
+            .title {
+                color: $primaryColor;
+            }
+        }
+
+        .arrow-down {
+            transform: rotate(90deg);
+            height: 12px;
+            margin-left: auto;
+        }
+    
+        .sidebar-avatar {
+            vertical-align: middle;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+    }
+
+    .sidebar-item {
+        font-size: 0.75rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        .sidebar-item-icon {
+            height: 12px;
+            transition: all 0.4s;
+            margin-right: .5rem;
+        }
+    }
+
+    .active-item .sidebar-item-icon {
+        height: 12px;
+        filter: brightness(0) invert(1);
+        transition: all 0.4s;
+    }
+}
+
+  
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        .dropdown-content {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+    .btn {
+        font-size: 0.75rem;
+        display: flex;
+        flex-direction: row;
+        color: #4a4a4a;
+
+        &:hover {
+            text-decoration: none;
+            color: $primaryColor;
+        }
+    }
+
+    .dropdown-icon {
+        height: 1rem;
+        margin-right: .3rem;
+    }
+}

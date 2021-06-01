@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import './painel.scss';
+
+import Sidebar from '../../components/Sidebar/Sidebar';
+
+
 
 const Painel = () => {
-  return <h1>Oieeeeeee</h1>
+  
+  return <Sidebar />
 
 }
 
