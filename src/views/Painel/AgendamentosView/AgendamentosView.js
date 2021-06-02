@@ -16,11 +16,12 @@ const Agendamentos = () => {
   const breakpoint = 1200;
 
   const [agendamentos, setAgendamentos] = useState([]);
+  const [agendamentosNoFilter, setAgendamentosNoFilter] = useState([]);
   const [places, setPlaces] = useState([]);
-  const [place, setPlace] = useState();
+  const [place, setPlace] = useState('');
 
   const [dates, setDates] = useState([]);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState('');
 
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState();
@@ -29,12 +30,13 @@ const Agendamentos = () => {
     const response = await api.get('/agendamentos')
       .then((res) => {
         let agendamentos = res.data.data;
-        let place = [...new Set(agendamentos.map((item) => item['localizacao']))]
+        let places = [...new Set(agendamentos.map((item) => item['localizacao']))]
         let dates = [...new Set(agendamentos.map((item) => item['data'].replace(/-/g, '/')))];
         
         
         setAgendamentos(agendamentos);
-        setPlaces(place);
+        setAgendamentosNoFilter(agendamentos);
+        setPlaces(places);
         setDates(dates);
       })
   }
@@ -60,6 +62,32 @@ const Agendamentos = () => {
       setPageNumber(pageNumber - 1);
     }
   }
+
+  const filterByPlace = (placeToFilter) => {
+    setPlace(placeToFilter);
+    handleFilter(placeToFilter, date);
+  }
+
+  const filterByDate = (dateToFilter) => {
+    setDate(dateToFilter);
+    handleFilter(place, dateToFilter);
+  }
+
+  const handleFilter = (placeToFilter, dateToFilter) => {
+    let agendamentosFiltered = agendamentosNoFilter;
+
+    if(placeToFilter !== ""){
+      agendamentosFiltered = agendamentosFiltered.filter(agendamento => agendamento.localizacao === placeToFilter);
+    }
+
+    if(dateToFilter !== ""){
+      agendamentosFiltered = agendamentosFiltered.filter(agendamento => agendamento.data.replace(/-/g, '/') === dateToFilter);
+    }
+
+    setAgendamentos(agendamentosFiltered);
+    setPageNumber(1);
+  }
+
   
   return (
     <div className="agendamentos-view">
@@ -72,22 +100,25 @@ const Agendamentos = () => {
           <div className="my-row align-items-center mt-2">
             <img src={filterIcon} className="filter-icon" />
 
-            <Select className="select-place" options={places} />
-            <Select className="select-date" options={dates} />
+            <Select className="select-place" options={places} startOption="Local de vacinação" onChoose={filterByPlace}/>
+            <Select className="select-date" options={dates} startOption="Data de vacinação" onChoose={filterByDate}/>
           </div>
           
           <div className="my-row mt-3 agendamentos-row">
-            { agendamentos.slice((pageNumber - 1) * pageSize, pageNumber * pageSize).map((agendamento, index) => (
-              <div className="agendamento-wrapper" key={index}>
-                <Agendamento 
-                  campanha={agendamento.vacina} 
-                  status={agendamento.status} 
-                  local={agendamento.localizacao} 
-                  data={agendamento.data} 
-                  horario={agendamento.horario}
-                />
-              </div>
-            ))}
+            { agendamentos
+                .slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
+                .map((agendamento, index) => (
+                  <div className="agendamento-wrapper" key={index}>
+                    <Agendamento 
+                      campanha={agendamento.vacina} 
+                      status={agendamento.status} 
+                      local={agendamento.localizacao} 
+                      data={agendamento.data} 
+                      horario={agendamento.horario}
+                    />
+                  </div>
+                ))
+            }
           </div>
 
           <div className="my-row justify-content-end mt-3">
