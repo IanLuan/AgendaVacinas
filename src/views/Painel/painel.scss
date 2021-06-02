@@ -1,2 +1,39 @@
 @import '../../sassStyles/variables';
 
+.painel {
+    display: flex;
+}
+
+.section-title {
+    color: $secondaryColor;
+    font-size: 1.14rem;
+}
+
+.search-input-box {
+    top: 1rem;
+    position: absolute;
+    height: min-content;
+    right: 3rem;
+    z-index: 2;
+
+    .search-input-icon {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1rem;
+    }
+
+    .search-input {
+        border-radius: 4px;
+        padding: 0.5rem;
+        border: 1px solid #1E293B;
+        font-size: 0.75rem;
+        text-transform: capitalize;
+        padding-right: 1.6rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

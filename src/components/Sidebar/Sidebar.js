@@ -31,7 +31,7 @@ const Sidebar = () => {
         </h3>
       </div>
       
-      <div class="custom-dropdown">
+      <div className="custom-dropdown">
         <div id="sidebar-userArea" className="sidebar-userArea dropbtn">
           <img className="sidebar-avatar" src={avatar}/>
           <div className="center-col">
