@@ -67,7 +67,6 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         dialogClassName="modal-custom"
-        scrollable
         id="comprovante"
       >
         <Modal.Body>
@@ -98,11 +97,14 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
             <span className="text-secondary">Coronavac - Buntantan</span>
           </div>
 
+
         </Modal.Body>
-        <Modal.Footer>
-          <button className="btn btn-light print-button" onClick={print}>Imprimir</button>
-          <button className="btn btn-light" onClick={() => setModalShow(false)}>Fechar</button>
-          <button className="btn btn-danger" onClick={() => setModalShow(false)}>Cancelar Agendamento</button>
+        <Modal.Footer className="modal-footer">
+          <button className="btn btn-primary print-button mt-5 btn-lineup" onClick={print}>Imprimir</button>
+          <button className="btn btn-danger" onClick={() => setModalShow(false)}>
+            Cancelar Agendamento
+          </button>
+          <button className="btn btn-light  btn-lineup" onClick={() => setModalShow(false)}>Fechar</button>
         </Modal.Footer>
       </Modal>
 

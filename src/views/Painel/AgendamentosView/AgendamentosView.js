@@ -136,7 +136,7 @@ const Agendamentos = () => {
             }
           </div>
 
-          <div className="my-row justify-content-end mt-3">
+          <div className="my-row pagination-row  mt-3">
             <Pagination>
               <li onClick={() => { handleChangeItem('left') }} className={`page-item ${pageNumber > 1 ? '' : 'disabled-item'}`}>
                 <div className="page-link">

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useViewport } from '../../../useViewport';
 import './agendarView.scss';
 import api from '../../../services/api';
 
@@ -9,12 +8,12 @@ import TextField from '../../../components/TextField/TextField';
 import Disponivel from '../../../components/Disponivel/Disponivel';
 import MobileHeader from '../../../components/MobileHeader/MobileHeader';
 import chevronRight from '../../../assets/chevron-right.svg'
+import Pagination from 'react-bootstrap/Pagination'
+
 
 
 const AgendarView = () => {
 
-  const { width } = useViewport();
-  const breakpoint = 1200;
 
   const [disponiveis, setDisponiveis] = useState([]);
   const [disponiveisNoFilter, setDisponiveisNoFilter] = useState([]);
@@ -47,6 +46,14 @@ const AgendarView = () => {
     getDisponiveis();
       
   }, [])
+
+  const handleChangeItem = (direction) => {
+    if(direction === "right" && pageNumber < Math.ceil(disponiveis.length / pageSize) ) {
+      setPageNumber(pageNumber + 1);
+    } else if(direction === "left" && pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+  }
 
   const getDisponiveisByDate = async (date)  =>  {
     const response = await api.get(`/agendar/disponibilidade/${date}`)
@@ -89,6 +96,16 @@ const AgendarView = () => {
     setModalConfirmarShow(true)
   }
 
+  let items = [];
+
+  for (let number = 1; number <= Math.ceil(disponiveis.length / pageSize); number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === pageNumber} onClick={()=> {setPageNumber(number)}}>
+        {number}
+      </Pagination.Item>,
+    );
+  }
+
 
   return (
 
@@ -118,7 +135,7 @@ const AgendarView = () => {
               <h1 className="title section-title mb-2">Locais de vacinação { dateText ? `- ${dateText.replace(/-/g, '/')}` : "" }</h1>
               
               {
-                disponiveis.map((localDisponivel, index) => 
+                disponiveis.slice((pageNumber - 1) * pageSize, pageNumber * pageSize).map((localDisponivel, index) => 
                   <div key={index}>
                   <div className="my-col locais-disponiveis mb-4 mt-4" key={index}>
                     <span className="text-secondary locais-disponiveis-header mb-3" >{localDisponivel.localizacao} | Covid-19 | 8h às 16h | {localDisponivel.data.replace(/-/g, '/')}</span>
@@ -134,6 +151,22 @@ const AgendarView = () => {
                   </div>
                 )
               }
+
+              <div className="my-row pagination-row  mt-3">
+                <Pagination>
+                  <li onClick={() => { handleChangeItem('left') }} className={`page-item ${pageNumber > 1 ? '' : 'disabled-item'}`}>
+                    <div className="page-link">
+                      <img src={chevronRight} className="prev-page"/>
+                    </div>
+                  </li>
+                  {items}
+                  <li onClick={() => { handleChangeItem('right') }} className={`page-item ${pageNumber < Math.ceil(disponiveis.length / pageSize) ? '' : 'disabled-item'}`}>
+                    <div className={`page-link`}>
+                      <img src={chevronRight} className="next-page"/>
+                    </div>
+                  </li>
+                </Pagination>
+              </div>
             </div> 
 
             <Modal
