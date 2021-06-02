@@ -3,10 +3,10 @@ import './select.scss';
 
 const Select = ({label, onChoose, options, id, className, startOption}) => {
   
-  const labelItem = label ? <label htmlFor={id}>{label}</label> : null
+  const labelItem = label ? <label className="mb-1" htmlFor={id}>{label}</label> : null
 
   return (
-    <div className="form-group select-box">
+    <div className="form-group select-box my-col">
     {labelItem}
     <select onChange={(e) => {onChoose(e.target.value)}} className={`select ${className}`} id={id}>
       <option value="">{startOption}</option>

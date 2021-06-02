@@ -1,7 +1,6 @@
 @import '../../sassStyles/variables';
 
 .sidebar {
-    width: 16%;
     height: 100vh;
     border-right: 1px solid $primaryColor;
     padding: 1rem 1rem;
@@ -9,12 +8,9 @@
     flex-direction: column;
     position: sticky;
     top: 0;
+    background-color: #fff;
 
     @include breakpoint(tablet-landscape-up) {
-        width: 18rem;
-    }
-
-    @include breakpoint(desktop-up) {
         width: 16rem;
     }
 

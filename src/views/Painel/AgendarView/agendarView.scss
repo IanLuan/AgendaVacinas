@@ -1,0 +1,68 @@
+@import '../../../sassStyles/variables';
+
+.main-row {
+    position: relative !important;
+    height: 100% !important;
+}
+
+.agendar-filter {
+    width: 28% !important;
+    padding: 1rem;
+    background-color: white;
+    height: min-content;
+    position: sticky;
+    top: calc(2.8rem + 2.5rem);
+    
+    @include breakpoint(tablet-landscape-up) {
+    }
+
+    @include breakpoint(desktop-up) {
+    
+    }
+
+    .btn {
+        font-size: .75rem;
+    }
+
+    .text-field {
+        font-size: .8rem !important;
+        padding-top: .5rem !important;
+        padding-bottom: .5rem !important;
+        margin-bottom: 1rem;
+    }
+}
+
+.chevron-icon {
+    position: sticky;
+    top: calc(2.8rem + 8rem);
+}
+
+.agendar-disponiveis {
+    min-height: 10rem;
+    width: 65%;
+    padding: 1rem;
+    background-color: white;   
+    margin-top: 2.5rem;
+    position: sticky;
+    
+    
+    @include breakpoint(tablet-landscape-up) {
+    }
+
+    @include breakpoint(desktop-up) {
+    
+    }
+}
+
+
+.locais-disponiveis-header {
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+.disponiveis-row {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, calc((100% / 5) - .6rem));
+    grid-gap: .6rem; 
+    justify-content: space-between;
+}

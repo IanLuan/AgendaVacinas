@@ -6,6 +6,7 @@ import './painel.scss';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import AgendamentosView from './AgendamentosView/AgendamentosView';
+import AgendarView from './AgendarView/AgendarView';
 
 import searchIcon from '../../assets/search-icon.svg'; 
 
@@ -23,10 +24,9 @@ const Painel = () => {
         <input type="text" className="search-input" placeholder="Pesquisar" />
       </div>
 
-
       <Switch>
         <PrivateRoute exact path='/' component={ AgendamentosView } />
-        <RedirectRoute exact path='/agendar' component={ AgendamentosView } />
+        <PrivateRoute exact path='/agendar' component={ AgendarView } />
       </Switch>
     </div>
   </BrowserRouter>

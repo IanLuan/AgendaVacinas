@@ -11,7 +11,8 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <PrivateRoute exact path='/' component={ Painel } />
-      <RedirectRoute exact path='/entrar' component={ Auth } />
+      <RedirectRoute path='/entrar' component={ Auth } />
+      <PrivateRoute exact path='/agendar' component={ Painel } />
     </Switch>
   </BrowserRouter>
 );

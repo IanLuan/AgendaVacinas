@@ -90,7 +90,7 @@ const Agendamentos = () => {
 
   
   return (
-    <div className="agendamentos-view">
+    <div className="agendamentos-view painel-view">
       <div className="white-curve"></div>
       <div className="main-column">
         <h1 className="title section-title">Meus agendamentos</h1>
@@ -100,8 +100,8 @@ const Agendamentos = () => {
           <div className="my-row align-items-center mt-2">
             <img src={filterIcon} className="filter-icon" />
 
-            <Select className="select-place" options={places} startOption="Local de vacinação" onChoose={filterByPlace}/>
-            <Select className="select-date" options={dates} startOption="Data de vacinação" onChoose={filterByDate}/>
+            <Select id="select-place" className="select-place" options={places} startOption="Local de vacinação" onChoose={filterByPlace}/>
+            <Select id="select-date" className="select-date" options={dates} startOption="Data de vacinação" onChoose={filterByDate}/>
           </div>
           
           <div className="my-row mt-3 agendamentos-row">

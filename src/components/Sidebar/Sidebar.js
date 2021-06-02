@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import './sidebar.scss';
 
 import calendar from '../../assets/calendar-icon-dark.svg';
@@ -13,11 +13,21 @@ import logoutIcon from '../../assets/logout-icon.svg';
 
 const Sidebar = () => {
   const history = useHistory();
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState();
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if(location.pathname == "/") {
+      setActive(0)
+    } else {
+      setActive(1)
+    }
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem("isLogged");
-    history.push('/entrar');
+    history.go("/entrar")
   }
 
   return (
@@ -56,12 +66,18 @@ const Sidebar = () => {
 
       <hr />
 
-      <button onClick={() => {setActive(0)}} className={`btn sidebar-item mb-1  ${active === 0 ? "btn-primary active-item" : "btn-light"}`}>
+      <button onClick={() => {
+        setActive(0)
+        history.push('/');
+        }} className={`btn sidebar-item mb-1  ${active === 0 ? "btn-primary active-item" : "btn-light"}`}>
         <img className="sidebar-item-icon" src={folderIcon} />
         Meus agendamentos
       </button>
 
-      <button onClick={() => {setActive(1)}} className={`btn sidebar-item mb-1" ${active === 1 ? "btn-primary active-item" : "btn-light"}`}>
+      <button onClick={() => {
+        setActive(1)
+        history.push('/agendar');
+        }} className={`btn sidebar-item mb-1" ${active === 1 ? "btn-primary active-item" : "btn-light"}`}>
         <img className="sidebar-item-icon" src={writeIcon} />
         Agendar
       </button>
