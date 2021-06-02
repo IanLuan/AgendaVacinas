@@ -19,6 +19,7 @@ const AgendarView = () => {
   const [municipios, setMunicipios] = useState([]);
   const [municipio, setMunicipio] = useState('');
   const [date, setDate] = useState('');
+  const [dateText, setDateText] = useState('');
 
   const [pageNumber, setPageNumber] = useState(1);
   const pageSize = 5;
@@ -40,26 +41,38 @@ const AgendarView = () => {
       
   }, [])
 
+  const getDisponiveisByDate = async (date)  =>  {
+    const response = await api.get(`/agendar/disponibilidade/${date}`)
+      .then((res) => {
+        let disponiveis = res.data.data;
+
+        if(municipio !== ""){
+          disponiveis = disponiveis.filter(disponivel => disponivel.municipio === municipio);
+        }
+        
+        setDateText(date)
+        setDisponiveis(disponiveis);
+        setPageNumber(1);
+      })
+  }
+
+  const handleChangeDate = (e) => {
+    let date = e.target.value;
+    date = date.split("-").reverse().join("-")
+    setDate(date)
+  }
+
   const filterByCampanha = () => {}
 
   const filterByMunicipio = (municipioToFilter) => {
     setMunicipio(municipioToFilter);
   }
 
-  // const handleFilter = () => {
-  //   let agendamentosFiltered = agendamentosNoFilter;
+  const handleFilter = (e) => {
+    e.preventDefault()
 
-  //   if(placeToFilter !== ""){
-  //     agendamentosFiltered = agendamentosFiltered.filter(agendamento => agendamento.localizacao === placeToFilter);
-  //   }
-
-  //   if(dateToFilter !== ""){
-  //     agendamentosFiltered = agendamentosFiltered.filter(agendamento => agendamento.data.replace(/-/g, '/') === dateToFilter);
-  //   }
-
-  //   setAgendamentos(agendamentosFiltered);
-  //   setPageNumber(1);
-  // }
+    getDisponiveisByDate(date)
+  }
 
 
   return (
@@ -75,8 +88,8 @@ const AgendarView = () => {
 
                 <Select id="select-campanha" className="mb-3" label="Campanha" options={["Covid-19"]} startOption="Todas as campanhas" onChoose={filterByCampanha} />
                 <Select id="select-municipio" className="mb-3" label="Municipio" options={municipios} startOption="Todos os municípios" onChoose={filterByMunicipio} />
-                <TextField id="date-field" type="date" label="Data" />
-                <button className="btn btn-primary btn-block font-bold" type="submit">Procurar</button>
+                <TextField id="date-field" type="date" label="Data" onChange={handleChangeDate} />
+                <button className="btn btn-primary btn-block font-bold" onClick={handleFilter}>Procurar</button>
 
               </form>
             </div>
@@ -84,7 +97,7 @@ const AgendarView = () => {
             <img src={chevronRight} className="chevron-icon" />
 
             <div className="my-card agendar-disponiveis">
-              <h1 className="title section-title mb-2">Locais de vacinação { date ? `- ${date}` : "" }</h1>
+              <h1 className="title section-title mb-2">Locais de vacinação { dateText ? `- ${dateText.replace(/-/g, '/')}` : "" }</h1>
               
               {
                 disponiveis.map((localDisponivel, index) => 
