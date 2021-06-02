@@ -68,6 +68,9 @@ const AgendarView = () => {
         setDisponiveis(disponiveis);
         setPageNumber(1);
       })
+      .catch((error) => {
+        setDisponiveis([]);
+      })
   }
 
   const handleChangeDate = (e) => {
@@ -133,6 +136,8 @@ const AgendarView = () => {
 
             <div className="my-card agendar-disponiveis">
               <h1 className="title section-title mb-2">Locais de vacinação { dateText ? `- ${dateText.replace(/-/g, '/')}` : "" }</h1>
+
+              { disponiveis.length === 0 ? <span className="empty-text">Não existem horários disponíveis para esse filtro. Experimente filtros diferentes</span> : null}
               
               {
                 disponiveis.slice((pageNumber - 1) * pageSize, pageNumber * pageSize).map((localDisponivel, index) => 
