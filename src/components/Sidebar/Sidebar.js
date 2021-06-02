@@ -14,11 +14,11 @@ import logoutIcon from '../../assets/logout-icon.svg';
 const Sidebar = () => {
   const history = useHistory();
   const [active, setActive] = useState();
-  const location = useLocation();
+  const myLocation = useLocation();
 
 
   useEffect(() => {
-    if(location.pathname == "/") {
+    if(myLocation.pathname === "/") {
       setActive(0)
     } else {
       setActive(1)

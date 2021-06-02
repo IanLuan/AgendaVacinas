@@ -21,7 +21,7 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
 
     <div className="agendamento">
       <div className="my-row align-items-center px-3">
-        <img src={vacinaIcon} className="vacina-icon" />
+        <img src={vacinaIcon} className="vacina-icon" alt="vacina-icon"/>
         <div className="campanha-box">
           <div className="vacina-label">Vacina</div>
           <div className="campanha">{campanha}</div>
@@ -33,18 +33,18 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
       <hr />
 
       <div className="my-row align-items-center mb-3 mt-1 px-3">
-        <img src={localIcon} className="agendamento-main-icon" />
+        <img src={localIcon} className="agendamento-main-icon" alt="local-icon"/>
         <div className="agendamento-main-text">{local}</div>
       </div>
 
       <div className="my-row align-items-center justify-content-between mb-3 px-3">
         <div className="my-row align-items-center">
-          <img src={calendarFilledIcon} className="agendamento-main-icon" />
+          <img src={calendarFilledIcon} className="agendamento-main-icon" alt="calendar-icon" />
           <div className="agendamento-main-text">{data.replace(/-/g, '/')}</div>
         </div>
 
         <div className="my-row align-items-center">
-          <img src={timeIcon} className="agendamento-main-icon" />
+          <img src={timeIcon} className="agendamento-main-icon" alt="time-icon"/>
           <div className="agendamento-main-text">{horario}</div>
         </div>
       </div>
@@ -98,14 +98,11 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
             <span className="text-secondary">Coronavac - Buntantan</span>
           </div>
 
-          <iframe id="ifmcontentstoprint" style={{height: "0px", width: "0px", position: "absolute", border: "none"}}></iframe>
-
-
         </Modal.Body>
         <Modal.Footer>
           <button className="btn btn-light print-button" onClick={print}>Imprimir</button>
-          <button className="btn btn-danger" onClick={() => setModalShow(false)}>Cancelar Agendamento</button>
           <button className="btn btn-light" onClick={() => setModalShow(false)}>Fechar</button>
+          <button className="btn btn-danger" onClick={() => setModalShow(false)}>Cancelar Agendamento</button>
         </Modal.Footer>
       </Modal>
 

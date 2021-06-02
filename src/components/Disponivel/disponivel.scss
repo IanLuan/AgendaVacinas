@@ -13,10 +13,18 @@
     border: 1px solid $secondaryColor;
     border-radius: 4px 0 0 4px;
     width: 40%;
-    padding: .5rem;
+    padding: .5rem .1rem;
     text-align: center;
     color: $secondaryColor;
     font-size: .75rem;
+    
+    @include breakpoint(tablet-portrait-down) {
+        font-size: .7rem;
+    }
+
+    @include breakpoint(phone-only) {
+        
+    }
 
     &:last-child {
         width: 60%;

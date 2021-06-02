@@ -1,0 +1,27 @@
+@import '../../sassStyles/variables';
+
+.mobile-header {
+    margin-bottom: 1rem;
+
+    @include breakpoint(tablet-landscape-up) {
+        display: none;
+    }
+
+    .mobile-header-title {
+        font-size: 0.7rem;
+    }
+
+    .calendar-icon-mobile {
+        height: 1.4rem;
+    }
+
+    .custom-dropdown {
+        margin-left: auto;
+
+        .dropdown-content {
+            float:right;
+            right: 0;
+            width: max-content;
+        }
+    }   
+}

@@ -9,6 +9,8 @@ import Select from '../../../components/Select/Select';
 import Agendamento from '../../../components/Agendamento/Agendamento';
 import filterIcon from '../../../assets/filter-icon.svg';
 import chevronRight from '../../../assets/chevron-right.svg'
+import MobileHeader from '../../../components/MobileHeader/MobileHeader';
+
 
 
 const Agendamentos = () => {
@@ -42,11 +44,19 @@ const Agendamentos = () => {
   }
 
   useEffect(() => {
+    let mounted = true;
     getAgendamentos();
-    width >= breakpoint ? setPageSize(4) : setPageSize(3);
+    return () => mounted = false;
   }, [])
 
+  useEffect(() => {
+    width >= breakpoint ? setPageSize(4) : setPageSize(3);
+  }, [width])
+
+
+
   let items = [];
+
   for (let number = 1; number <= Math.ceil(agendamentos.length / pageSize); number++) {
     items.push(
       <Pagination.Item key={number} active={number === pageNumber} onClick={()=> {setPageNumber(number)}}>
@@ -54,6 +64,7 @@ const Agendamentos = () => {
       </Pagination.Item>,
     );
   }
+  
 
   const handleChangeItem = (direction) => {
     if(direction === "right" && pageNumber < Math.ceil(agendamentos.length / pageSize) ) {
@@ -93,15 +104,17 @@ const Agendamentos = () => {
     <div className="agendamentos-view painel-view">
       <div className="white-curve"></div>
       <div className="main-column">
+        <MobileHeader />
         <h1 className="title section-title">Meus agendamentos</h1>
 
         <div className="filter-agendamentos mt-4">
           Filtrar agendamento
-          <div className="my-row align-items-center mt-2">
+          <div className="my-row align-items-center mt-2 filter-row">
             <img src={filterIcon} className="filter-icon" />
-
-            <Select id="select-place" className="select-place" options={places} startOption="Local de vacinação" onChoose={filterByPlace}/>
-            <Select id="select-date" className="select-date" options={dates} startOption="Data de vacinação" onChoose={filterByDate}/>
+            <div className="filter-row-selects">
+              <Select id="select-place" className="select-place" options={places} startOption="Local de vacinação" onChoose={filterByPlace}/>
+              <Select id="select-date" className="select-date" options={dates} startOption="Data de vacinação" onChoose={filterByDate}/>
+            </div>
           </div>
           
           <div className="my-row mt-3 agendamentos-row">

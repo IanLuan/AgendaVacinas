@@ -3,6 +3,12 @@
 .main-row {
     position: relative !important;
     height: 100% !important;
+
+    @include breakpoint(tablet-portrait-down) {
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+    }
 }
 
 .agendar-filter {
@@ -12,13 +18,13 @@
     height: min-content;
     position: sticky;
     top: calc(2.8rem + 2.5rem);
-    
-    @include breakpoint(tablet-landscape-up) {
-    }
 
-    @include breakpoint(desktop-up) {
-    
+    @include breakpoint(tablet-portrait-down) {
+        width: 100% !important;
+        position: static;
+        margin-top: 1rem;
     }
+    
 
     .btn {
         font-size: .75rem;
@@ -35,6 +41,10 @@
 .chevron-icon {
     position: sticky;
     top: calc(2.8rem + 8rem);
+
+    @include breakpoint(tablet-portrait-down) {
+        display: none;
+    }
 }
 
 .agendar-disponiveis {
@@ -43,15 +53,17 @@
     padding: 1rem;
     background-color: white;   
     margin-top: 2.5rem;
-    position: sticky;
-    
-    
-    @include breakpoint(tablet-landscape-up) {
+
+    @include breakpoint(tablet-portrait-down) {
+        width: 100% !important;
+        position: static;
+        margin-top: 2.5rem;
     }
 
-    @include breakpoint(desktop-up) {
-    
+    @include breakpoint(phone-only) {
+        padding: 1rem .5rem;
     }
+
 }
 
 
@@ -65,4 +77,24 @@
     grid-template-columns: repeat(auto-fill, calc((100% / 5) - .6rem));
     grid-gap: .6rem; 
     justify-content: space-between;
+
+    @include breakpoint(tablet-portrait-down) {
+        grid-template-columns: repeat(auto-fill, calc((100% / 3) - .6rem));
+    }
+
+    @include breakpoint(phone-only) {
+        grid-template-columns: repeat(auto-fill, calc((100% / 2) - .2rem));
+        row-gap: .5rem;
+        column-gap: .2rem;
+    }
+
+    @include breakpoint(tablet-landscape-up) {
+        grid-template-columns: repeat(auto-fill, calc((100% / 4) - .4rem));
+        grid-gap: .4rem;
+    }
+
+    @include breakpoint(desktop-up) {
+        grid-template-columns: repeat(auto-fill, calc((100% / 5) - .6rem));
+        grid-gap: .6rem; 
+    }
 }

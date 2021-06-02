@@ -54,7 +54,7 @@ const SignUpCard = ({ toggleLogin }) => {
     
     if(!isEmailOnly) {
 
-      if (name.value == "") {
+      if (name.value === "") {
         errors.push("nameField");
       }
 
@@ -76,7 +76,7 @@ const SignUpCard = ({ toggleLogin }) => {
       }
 
       // confirm password
-      if (password.value != confirmPassword.value) {
+      if (password.value !== confirmPassword.value) {
         errors.push("confirmPasswordField");
       }
     }

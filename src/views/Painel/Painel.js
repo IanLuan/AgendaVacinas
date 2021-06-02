@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../../private-route';
-import RedirectRoute from '../../redirect-route';
 import './painel.scss';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import AgendamentosView from './AgendamentosView/AgendamentosView';
 import AgendarView from './AgendarView/AgendarView';
+import MobileBottomBar from '../../components/MobileBottomBar/MobileBottomBar';
 
 import searchIcon from '../../assets/search-icon.svg'; 
 
@@ -24,6 +24,8 @@ const Painel = () => {
         <input type="text" className="search-input" placeholder="Pesquisar" />
       </div>
 
+      <MobileBottomBar />
+      
       <Switch>
         <PrivateRoute exact path='/' component={ AgendamentosView } />
         <PrivateRoute exact path='/agendar' component={ AgendarView } />
