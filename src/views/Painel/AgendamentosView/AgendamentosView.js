@@ -7,6 +7,8 @@ import api from '../../../services/api';
 import Pagination from 'react-bootstrap/Pagination'
 import Select from '../../../components/Select/Select';
 import Agendamento from '../../../components/Agendamento/Agendamento';
+import BarChart from '../../../components/Charts/BarChart';
+import PieChart from '../../../components/Charts/PieChart';
 import filterIcon from '../../../assets/filter-icon.svg';
 import chevronRight from '../../../assets/chevron-right.svg'
 import MobileHeader from '../../../components/MobileHeader/MobileHeader';
@@ -148,6 +150,18 @@ const Agendamentos = () => {
                 </div>
               </li>
             </Pagination>
+          </div>
+        </div>
+        
+        <h2 className="title section-title mb-4">Transparência</h2>
+
+        <div className="my-row graficos-row">
+          <div className="pie-chart-wrapper my-card">
+            <PieChart />
+          </div>
+
+          <div className="bar-chart-wrapper my-card">
+            <BarChart />
           </div>
         </div>
       </div>

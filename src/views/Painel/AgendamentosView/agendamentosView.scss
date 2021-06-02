@@ -39,7 +39,6 @@
 }
 
 
-
 .filter-row {
     @include breakpoint(phone-only) {
         justify-content: center;
@@ -80,4 +79,39 @@
         cursor: auto;
         background-color: #fff;
     }
+}
+
+.graficos-row {
+    justify-content: space-between;
+
+    
+    .bar-chart-wrapper, .pie-chart-wrapper {
+        width: 48%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: #fff;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        @include breakpoint(tablet-portrait-down) {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    
+        
+    }
+
+    .bar-chart {
+        width: 95%;
+    }
+
+    .pie-chart {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
 }

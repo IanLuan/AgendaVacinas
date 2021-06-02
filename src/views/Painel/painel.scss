@@ -79,6 +79,10 @@
     min-height: 100%;
 
     @include breakpoint(tablet-portrait-down) {
+        padding: 1rem 1.2rem;
+    }
+
+    @include breakpoint(phone-only) {
         padding: 1rem .5rem;
     }
 
