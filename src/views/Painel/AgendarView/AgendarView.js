@@ -16,7 +16,6 @@ const AgendarView = () => {
 
 
   const [disponiveis, setDisponiveis] = useState([]);
-  const [disponiveisNoFilter, setDisponiveisNoFilter] = useState([]);
   const [municipios, setMunicipios] = useState([]);
   const [municipio, setMunicipio] = useState('');
   const [date, setDate] = useState('');
@@ -31,13 +30,12 @@ const AgendarView = () => {
   const pageSize = 5;
 
   const getDisponiveis = async ()  =>  {
-    const response = await api.get('/agendar/disponibilidade')
+    await api.get('/agendar/disponibilidade')
       .then((res) => {
         let disponiveis = res.data.data;
         let municipios = [...new Set(disponiveis.map((item) => item['municipio']))]        
         
         setDisponiveis(disponiveis);
-        setDisponiveisNoFilter(disponiveis);
         setMunicipios(municipios);
       })
   }
@@ -56,7 +54,7 @@ const AgendarView = () => {
   }
 
   const getDisponiveisByDate = async (date)  =>  {
-    const response = await api.get(`/agendar/disponibilidade/${date}`)
+    await api.get(`/agendar/disponibilidade/${date}`)
       .then((res) => {
         let disponiveis = res.data.data;
 
@@ -132,7 +130,7 @@ const AgendarView = () => {
               </form>
             </div>
 
-            <img src={chevronRight} className="chevron-icon" />
+            <img src={chevronRight} className="chevron-icon" alt="chevron-icon" />
 
             <div className="my-card agendar-disponiveis">
               <h1 className="title section-title mb-2">Locais de vacinação { dateText ? `- ${dateText.replace(/-/g, '/')}` : "" }</h1>
@@ -161,13 +159,13 @@ const AgendarView = () => {
                 <Pagination>
                   <li onClick={() => { handleChangeItem('left') }} className={`page-item ${pageNumber > 1 ? '' : 'disabled-item'}`}>
                     <div className="page-link">
-                      <img src={chevronRight} className="prev-page"/>
+                      <img src={chevronRight} className="prev-page" alt="chevron-icon"/>
                     </div>
                   </li>
                   {items}
                   <li onClick={() => { handleChangeItem('right') }} className={`page-item ${pageNumber < Math.ceil(disponiveis.length / pageSize) ? '' : 'disabled-item'}`}>
                     <div className={`page-link`}>
-                      <img src={chevronRight} className="next-page"/>
+                      <img src={chevronRight} className="next-page" alt="chevron-icon" />
                     </div>
                   </li>
                 </Pagination>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Switch} from 'react-router-dom';
 import PrivateRoute from '../../private-route';
 import './painel.scss';
 
@@ -20,7 +20,7 @@ const Painel = () => {
       <Sidebar />
 
       <div className="search-input-box">
-        <img src={searchIcon} className="search-input-icon" />
+        <img src={searchIcon} className="search-input-icon" alt="search-icon" />
         <input type="text" className="search-input" placeholder="Pesquisar" />
       </div>
 

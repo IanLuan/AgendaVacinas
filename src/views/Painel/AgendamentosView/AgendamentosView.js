@@ -31,7 +31,7 @@ const Agendamentos = () => {
   const [pageSize, setPageSize] = useState();
 
   const getAgendamentos = async ()  =>  {
-    const response = await api.get('/agendamentos')
+    await api.get('/agendamentos')
       .then((res) => {
         let agendamentos = res.data.data;
         let places = [...new Set(agendamentos.map((item) => item['localizacao']))]

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './mobileHeader.scss';
 
 import calendar from '../../assets/calendar-icon-dark.svg';
@@ -11,7 +11,6 @@ import logoutIcon from '../../assets/logout-icon.svg';
 
 const MobileHeader = () => {
   const history = useHistory();
-  const myLocation = useLocation();
 
   const handleLogout = () => {
     localStorage.removeItem("isLogged");
