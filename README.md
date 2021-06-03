@@ -2,7 +2,7 @@
 
 Projeto de agendamento de vacinas (Front-end) desenvolvido para fase 2 da seleção do LAIS. O projeto foi feito com React.js.
 
-## Alguns Screenshots do projeto
+## Algumas images da implementação projeto
 
 #### Versão desktop:
 
