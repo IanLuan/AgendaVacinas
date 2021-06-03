@@ -100,7 +100,7 @@ const Agendamento = ({campanha, status, local, data, horario}) => {
 
         </Modal.Body>
         <Modal.Footer className="modal-footer">
-          <button className="btn btn-primary print-button mt-5 btn-lineup" onClick={print}>Imprimir</button>
+          <button className="btn btn-primary print-button btn-lineup" onClick={print}>Imprimir</button>
           <button className="btn btn-danger" onClick={() => setModalShow(false)}>
             Cancelar Agendamento
           </button>
